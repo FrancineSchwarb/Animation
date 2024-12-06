@@ -10,7 +10,8 @@ const PASSIVATION_MS = 1000;
 const TITLE          = "Animation";
 
 
-/** TODO: What does this page do?
+/**The animation page comes with a slide-in / slide-out animation and color changes
+ * the paragraphs appear one after the other
  * @return { PageType }
  * @constructor
  */
@@ -24,20 +25,18 @@ const AnimationPage = () => Page({
     contentElement:    /** @type { HTMLElement }      */ contentElement,
 });
 
-
-/** TODO: Write content */
 const [contentElement] = dom(`
     <div class="${PAGE_CLASS} prosa">
         <h1>Animation</h1>
-        <p>Hello test</p>
-        <p>bla 1</p>
-        <p>bla 2</p>
-        <p>bla 3</p>
-        <p>bla 4</p>
+        <p>The overall page uses container animations to create smooth transitions when the page is activated or deactivated. The page slides in from the right during activation, scaling slightly and rotating to add depth. It fades in by increasing opacity, while its color transitions enhance the effect.</p>
+        <p>The title animation is distinct and visually striking. The title begins off-screen on the left, slightly rotated, and slides into its position while straightening up. It fades in simultaneously, ensuring a polished and attention-grabbing reveal.</p>
+        <p>Each paragraph element is animated sequentially to provide a cascading effect. Paragraphs start slightly below their final position, fully transparent, and slide upward while fading in. This creates a smooth and natural progression as the content appears.</p>
+        <p>The staggered timing for paragraphs is achieved using <code>nth-child</code> selectors. Each paragraph has a unique delay, allowing them to appear one after the other. This timing adds a sense of rhythm and engagement for the user.</p>
+        <p>The animations are customizable using variables for duration and easing functions. For example, the container and title use <code>cubic-bezier</code> easing for a bounce effect, while paragraphs use <code>ease-out</code> for a smoother transition.</p>
+        <p>Overall, the combination of container, title, and paragraph animations ensures the page is interactive and visually appealing, with seamless entry and exit transitions.</p>
     </div>
 `);
 
-/** TODO: style this page */
 const [styleElement] = dom(`
     <style data-style-id="${PAGE_CLASS}">
         @layer pageLayer {
@@ -58,8 +57,7 @@ const [styleElement] = dom(`
 
 
                 p {
-                                        opacity: 0;
-
+                    opacity: 0;
                     transform: translateY(20px);
                     animation: ${PAGE_CLASS}_paragraph 0.5s ease-out forwards;
                 }
@@ -83,23 +81,25 @@ const [styleElement] = dom(`
                 p:nth-child(6) {
                     animation-delay: 3s;
                 }
+                
+                   p:nth-child(7) {
+                    animation-delay: 3.5s;
+                }
               
             }
-
-                     
                                       
              }    
              
-                         @keyframes ${PAGE_CLASS}_container-in {
+             @keyframes ${PAGE_CLASS}_container-in {
                  0% {
                      opacity:        0.5;
                      transform:      translateX(100cqw) scale(0.8) rotate(10deg);
-                     color: rgba(255, 200, 0, 0.5);
+                     color: var(--kb-color-rgb-lavender-700);
                  }
                  50% {
                      opacity:        0.8;
                      transform:      translateX(20cqw) scale(1.1) rotate(-5deg);
-                     color: rgba(255, 100, 200, 0.8);
+                     color: var(--kb-color-rgb-purple-700);
                  }
                  100% {
                      opacity:        1;
@@ -117,12 +117,12 @@ const [styleElement] = dom(`
                  50% {
                      opacity:        0.8;
                      transform:      translateX(-20cqw) scale(0.9) rotate(5deg);
-                     color: rgba(100, 200, 255, 0.8);
+                     color: var(--kb-color-rgb-green-500);
                  }
                  100% {
                      opacity:        0.5;
                      transform:      translateX(-100cqw) scale(0.7) rotate(-10deg);
-                     color: rgba(255, 200, 0, 0.5);
+                     color: var(--kb-color-rgb-yellow-500);
                  }
             }
             
