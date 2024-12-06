@@ -39,8 +39,6 @@ const [styleElement] = dom(`
     <style data-style-id="${PAGE_CLASS}">
         @layer pageLayer {
             .${PAGE_CLASS} {
-                animation: ${PAGE_CLASS}_container 1s ease-out forwards;
-
                 &.activate {
                     animation: ${PAGE_CLASS}_container-in calc(var(--activation-ms) * 1ms) ease-out forwards;
                 }
