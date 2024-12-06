@@ -58,22 +58,6 @@ const [styleElement] = dom(`
                     transform: translateY(20px);
                     animation: ${PAGE_CLASS}_paragraph 3s ease-out forwards;
                 }
-
-
-p.passivate {
-    animation: ${PAGE_CLASS}_paragraph-fade-out 0.5s ease-out forwards;
-}
-
-@keyframes ${PAGE_CLASS}_paragraph-fade-out {
-    0% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(50px); /* Hier kannst du das nach links oder rechts ändern, wenn gewünscht */
-    }
-}
                 p:nth-child(2) {
                     animation-delay: 1s;
                 }
