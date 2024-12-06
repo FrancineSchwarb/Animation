@@ -1,28 +1,26 @@
-import { dom }                                    from "../../../kolibri/util/dom.js";
-import { URI_HASH_ANIMATION }                     from "../../../customize/uriHashes.js";
-import { Page }                                   from "../../../kolibri/navigation/page/page.js";
+import { dom } from "../../../kolibri/util/dom.js";
+import { URI_HASH_ANIMATION } from "../../../customize/uriHashes.js";
+import { Page } from "../../../kolibri/navigation/page/page.js";
 
 export { AnimationPage }
 
-const PAGE_CLASS     = URI_HASH_ANIMATION.substring(1); // share between page, content, and style
-const ACTIVATION_MS  = 1000;
+const PAGE_CLASS = URI_HASH_ANIMATION.substring(1); // share between page, content, and style
+const ACTIVATION_MS = 1000;
 const PASSIVATION_MS = 1000;
-const TITLE          = "Animation";
+const TITLE = "Animation";
 
-
-/**The animation page comes with a slide-in / slide-out animation and color changes
- * the paragraphs appear one after the other
+/** The animation page comes with a slide-in / slide-out animation and color changes
+ * The paragraphs appear one after the other
  * @return { PageType }
  * @constructor
  */
-
 const AnimationPage = () => Page({
-    titleText:         TITLE,
-    activationMs:      ACTIVATION_MS,
-    passivationMs:     PASSIVATION_MS,
-    pageClass:         PAGE_CLASS,
-    styleElement  :    /** @type { HTMLStyleElement } */ styleElement,
-    contentElement:    /** @type { HTMLElement }      */ contentElement,
+    titleText: TITLE,
+    activationMs: ACTIVATION_MS,
+    passivationMs: PASSIVATION_MS,
+    pageClass: PAGE_CLASS,
+    styleElement: /** @type { HTMLStyleElement } */ styleElement,
+    contentElement: /** @type { HTMLElement } */ contentElement,
 });
 
 const [contentElement] = dom(`
@@ -55,7 +53,6 @@ const [styleElement] = dom(`
                     animation: ${PAGE_CLASS}_title calc(var(--activation-ms) * 1ms) cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
                 }
 
-
                 p {
                     opacity: 0;
                     transform: translateY(20px);
@@ -81,62 +78,61 @@ const [styleElement] = dom(`
                 p:nth-child(6) {
                     animation-delay: 3s;
                 }
-                
-                   p:nth-child(7) {
+
+                p:nth-child(7) {
                     animation-delay: 3.5s;
                 }
-              
-            }
-                                      
-             }    
-             
-             @keyframes ${PAGE_CLASS}_container-in {
-                 0% {
-                     opacity:        0.5;
-                     transform:      translateX(100cqw) scale(0.8) rotate(10deg);
-                     color: var(--kb-color-rgb-lavender-700);
-                 }
-                 50% {
-                     opacity:        0.8;
-                     transform:      translateX(20cqw) scale(1.1) rotate(-5deg);
-                     color: var(--kb-color-rgb-purple-700);
-                 }
-                 100% {
-                     opacity:        1;
-                     transform:      translateX(0) scale(1) rotate(0deg);
-                     color: initial;
-                 }
             }
 
-            @keyframes ${PAGE_CLASS}_container-out {
-               0% {
-                     opacity:        1;
-                     transform:      translateX(0) scale(1) rotate(0deg);
-                     color: initial;
-                 }
-                 50% {
-                     opacity:        0.8;
-                     transform:      translateX(-20cqw) scale(0.9) rotate(5deg);
-                     color: var(--kb-color-rgb-green-500);
-                 }
-                 100% {
-                     opacity:        0.5;
-                     transform:      translateX(-100cqw) scale(0.7) rotate(-10deg);
-                     color: var(--kb-color-rgb-yellow-500);
-                 }
-            }
-            
-            @keyframes ${PAGE_CLASS}_paragraph {
-                0% {
-                    opacity: 0;
-                    transform: translateY(20px);
-                }
-                100% {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-                    
         }
+
+        @keyframes ${PAGE_CLASS}_container-in {
+            0% {
+                opacity: 0.5;
+                transform: translateX(100cqw) scale(0.8) rotate(10deg);
+                color: var(--kb-color-rgb-lavender-700);
+            }
+            50% {
+                opacity: 0.8;
+                transform: translateX(20cqw) scale(1.1) rotate(-5deg);
+                color: var(--kb-color-rgb-purple-700);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0) scale(1) rotate(0deg);
+                color: initial;
+            }
+        }
+
+        @keyframes ${PAGE_CLASS}_container-out {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(1) rotate(0deg);
+                color: initial;
+            }
+            50% {
+                opacity: 0.8;
+                transform: translateY(20cqh) scale(0.9) rotate(10deg);
+                color: var(--kb-color-rgb-green-500);
+            }
+            100% {
+                opacity: 0.5;
+                transform: translateY(50cqh) scale(0.7) rotate(25deg);
+                color: var(--kb-color-rgb-yellow-500);
+            }
+        }
+
+        @keyframes ${PAGE_CLASS}_paragraph {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        
     </style>
 `);
