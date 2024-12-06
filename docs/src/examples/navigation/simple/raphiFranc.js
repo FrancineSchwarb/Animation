@@ -44,11 +44,11 @@ const [styleElement] = dom(`
                 }
 
                 &.passivate {
-                    animation: ${PAGE_CLASS}_container-out calc(var(--passivation-ms) * 1ms) ease-in forwards;
+                    animation: ${PAGE_CLASS}_container-out calc(var(--passivation-ms) * 1ms) linear forwards;
                 }
 
                 h1 {
-                    animation: ${PAGE_CLASS}_title calc(var(--activation-ms) * 1ms) cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+                    animation: ${PAGE_CLASS}_title calc(var(--activation-ms) * 2ms) ease forwards;
                 }
 
                 p {
@@ -86,12 +86,12 @@ const [styleElement] = dom(`
         @keyframes ${PAGE_CLASS}_container-in {
             0% {
                 opacity: 0.5;
-                transform: translateX(100cqw) scale(0.8) rotate(10deg);
+                transform: translateX(100cqw) scale(1) rotate(5deg);
                 color: var(--kb-color-rgb-lavender-700);
             }
             50% {
                 opacity: 0.8;
-                transform: translateX(20cqw) scale(1.1) rotate(-5deg);
+                transform: translateX(20cqw) scale(1) rotate(-5deg);
                 color: var(--kb-color-rgb-purple-700);
             }
             100% {
@@ -109,21 +109,17 @@ const [styleElement] = dom(`
             }
             50% {
                 opacity: 0.8;
-                transform: translateY(20cqh) scale(0.9) rotate(10deg);
+                transform: translateY(10px) scale(1) rotate(-10deg);
                 color: var(--kb-color-rgb-green-500);
             }
             100% {
                 opacity: 0.5;
-                transform: translateY(50cqh) scale(0.7) rotate(25deg);
+                transform: translateY(100px) scale(1) rotate(-25deg);
                 color: var(--kb-color-rgb-yellow-500);
             }
         }
 
         @keyframes ${PAGE_CLASS}_paragraph {
-            0% {
-                opacity: 0;
-                transform: translateY(20px);
-            }
             100% {
                 opacity: 1;
                 transform: translateY(0);
